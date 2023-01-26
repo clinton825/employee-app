@@ -15,7 +15,7 @@ fun main() {
     payslip()
 }
    fun payslip(){
-
+          GrossSalary / x
 PAYE = (GrossSalary / x) * (PAYE / y)
        PRSI= (GrossSalary / x) / y * PRSI
        var TotalDeduction = PAYE + PRSI + CycleToWork
@@ -29,16 +29,15 @@ PAYE = (GrossSalary / x) * (PAYE / y)
        println("\n-----------------------------------------------------------------")
        println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
        println("\n----------------------------------------------------------------")
-       GrossSalary / x
-       println("  \tSalary : ${GrossSalary / x}")
-       println("\tBonus: " + Bonus / x)
-       println("                                    \tPAYE : " + PAYE )
-       println("                                      \tPRSI : "+ PRSI)
+       println("  \tSalary :" + "%.2f".format( GrossSalary / x))
+       println("\tBonus: " + "%.2f".format(Bonus / x))
+       println("                                    \tPAYE : " + "%.2f".format (PAYE ))
+       println("                                      \tPRSI : "+ "%.2f".format(PRSI))
        println("                                     \tCycle To Work: $CycleToWork")
        println("\n----------------------------------------------------------------")
-       println("\t Gross: " + Gross + "\t Total Deduction:" + TotalDeduction)
+       println("\t Gross: " + "%.2f".format(Gross) + "\t Total Deduction:" + "%.2f".format(TotalDeduction))
        println("\n----------------------------------------------------------------")
-       println("\t  NET PAY: " + Net)
+       println("\t  NET PAY: " + "%.2f".format(Net))
    }
 
 
