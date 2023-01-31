@@ -1,6 +1,6 @@
 
-var FirstName = "JOE"
-var Surname = "SOAP"
+var FirstName = "clinton"
+var Surname = "bempah"
 var Gender = "M"
 var EmployeeID = 6143
 var GrossSalary = 67_543.21
@@ -25,7 +25,7 @@ PAYE = (GrossSalary / x) * (PAYE / y)
        println("\n----------------------------------------------------------------")
        println("                     Monthly Payslip")
        println("\n-----------------------------------------------------------------")
-       println("\tEmployee Name:  $FirstName  $Surname ($Gender)      Employee ID: $EmployeeID ")
+       println("\tEmployee Name:  ${FirstName.uppercase()}  ${Surname.uppercase()} ($Gender)      Employee ID: $EmployeeID ")
        println("\n-----------------------------------------------------------------")
        println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
        println("\n----------------------------------------------------------------")
