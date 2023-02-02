@@ -1,44 +1,82 @@
+import kotlin.math.round
 
-var FirstName = "clinton"
-var Surname = "bempah"
-var Gender = "M"
-var EmployeeID = 6143
-var GrossSalary = 67_543.21
-var PAYE = 38.5
-var PRSI = 5.2
-var Bonus = 1450.50
-var CycleToWork = 54.33
-var x = 12
-var y = 100
-fun main() {
-    println("Pay Slip Printer")
-    payslip()
+val FirstName = "clinton"
+val Surname = "bempah"
+val Gender = "m"
+val EmployeeID = 6143
+val GrossSalary = 67_543.21
+val PAYE = 38.5
+val PRSI = 5.2
+val Bonus = 1450.50
+val CycleToWork = 54.33
+val x = 12
+val y = 100
+val TotalDeduction =  (PAYE )+ PRSI + CycleToWork
+val Net =  (GrossSalary) - TotalDeduction
+fun main(args: Array<String>) {
+    var input: Int
+    do {
+
+        input = menu()
+        when (input) {
+            1 -> println("Monthly Salary: ${getMonthlySalary()}")
+            2 -> println("Monthly PRSI:${getMonthlyPRSI()}")
+            3 -> println("Monthly PAYE:${getMonthlyPRSI()}")
+            4-> println("Monthly Gross Pay: ${getGrossMonntlyPay()}")
+            5-> println("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
+             6-> println("Monthly Net Pay: ${getNetMonthlyPay()}")
+             7-> println(getPayslip())
+               -1 -> println("Exiting App")
+               else -> println("Invaild Option")
+
+        }
+           println()
+    }while (input != -1)
 }
-   fun payslip(){
-          GrossSalary / x
-PAYE = (GrossSalary / x) * (PAYE / y)
-       PRSI= (GrossSalary / x) / y * PRSI
-       var TotalDeduction = PAYE + PRSI + CycleToWork
-       var Gross = GrossSalary / x + Bonus / x
-       var Net = Gross-TotalDeduction
 
-       println("\n----------------------------------------------------------------")
-       println("                     Monthly Payslip")
-       println("\n-----------------------------------------------------------------")
-       println("\tEmployee Name:  ${FirstName.uppercase()}  ${Surname.uppercase()} ($Gender)      Employee ID: $EmployeeID ")
-       println("\n-----------------------------------------------------------------")
-       println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
-       println("\n----------------------------------------------------------------")
-       println("  \tSalary :" + "%.2f".format( GrossSalary / x))
-       println("\tBonus: " + "%.2f".format(Bonus / x))
-       println("                                    \tPAYE : " + "%.2f".format (PAYE ))
-       println("                                      \tPRSI : "+ "%.2f".format(PRSI))
-       println("                                     \tCycle To Work: $CycleToWork")
-       println("\n----------------------------------------------------------------")
-       println("\t Gross: " + "%.2f".format(Gross) + "\t Total Deduction:" + "%.2f".format(TotalDeduction))
-       println("\n----------------------------------------------------------------")
-       println("\t  NET PAY: " + "%.2f".format(Net))
-   }
+fun menu(): Int {
+    print(
+        """
+         Employee Menu for ${getFullname()}
+           1. Monthly Salary
+           2. Monthly PRSI
+           3. Monthly PAYE
+           4. Monthly Gross Pay
+           5. Monthly Total Deductions
+           6. Monthly Net Pay
+           7. Full Payslip
+          -1. Exit
+         Enter Option : """
+    )
+    return readLine()!!.toInt()
+}
+fun getMonthlySalary  () =  GrossSalary / x
+fun getMonthlyPRSI () =  (GrossSalary / x) / y * PRSI
+fun getMonthlyPAYE () =  (GrossSalary / x) * (PAYE / y)
+ fun getGrossMonntlyPay() = GrossSalary / x + Bonus / x
+fun getTotalMonthlyDeductions() =  roundTwoDecimals(PAYE + PRSI + CycleToWork)
+fun getNetMonthlyPay() = GrossSalary - TotalDeduction
 
+fun getPayslip() {
 
+    println("\n----------------------------------------------------------------")
+    println("                     Monthly Payslip")
+    println("\n-----------------------------------------------------------------")
+    println("\tEmployee Name:  ${FirstName.uppercase()}  ${Surname.uppercase()} (${Gender.uppercase()})      Employee ID: $EmployeeID ")
+    println("\n-----------------------------------------------------------------")
+    println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
+    println("\n----------------------------------------------------------------")
+    println("  \tSalary :" + roundTwoDecimals(GrossSalary / x))
+    println("\tBonus: " + roundTwoDecimals(Bonus / x))
+    println("                                    \tPAYE : " + roundTwoDecimals(PAYE))
+    println("                                      \tPRSI : " + roundTwoDecimals(PRSI))
+    println("                                     \tCycle To Work: $CycleToWork")
+    println("\n----------------------------------------------------------------")
+    println("\t Gross: " + roundTwoDecimals(GrossSalary) + "\t Total Deduction:" + roundTwoDecimals(TotalDeduction))
+    println("\n----------------------------------------------------------------")
+    println("\t  NET PAY: " + roundTwoDecimals(Net))
+}
 
+fun roundTwoDecimals(number: Double) = round(number * 100) / 100
+
+fun getFullname() = FirstName.uppercase() + "  " + Surname.uppercase()
