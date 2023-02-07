@@ -94,41 +94,6 @@ fun menu(): Int {
 
 
 
-var employee = Employee("Clinton","Bempah",'m',6143,67543.21,38.5,5.2, 1450.50,54.33)
-fun getFullname() = when (employee.Gender ) {
-    'm', 'M' -> "Mr.${employee.firstName}  ${employee.Surname}"
-    'f', 'F' -> "Ms. ${employee.firstName}  ${employee.Surname}"
-    else -> "${employee.firstName}  ${employee.Surname}"
-}
-
-
-fun getMonthlySalary() = {
-    employee.GrossSalary / x
-    fun getMonthlyPRSI() = employee.GrossSalary / x / y * employee.PRSI
-    fun getMonthlyPAYE() = employee.GrossSalary / x * (employee.PAYE / y)
-    fun getGrossMonntlyPay() = employee.GrossSalary / x + employee.Bonus / x
-    fun getTotalMonthlyDeductions() = round(employee.PAYE + employee.PRSI + employee.CycleToWork)
-    fun getNetMonthlyPay() = employee.GrossSalary - employee.CycleToWork
-
-    fun getPayslip() {
-
-        println("\n----------------------------------------------------------------")
-        println("                     Monthly Payslip")
-        println("\n-----------------------------------------------------------------")
-        println("\tEmployee Name:  ${employee.firstName.uppercase()}  ${employee.Surname.uppercase()} (${employee.Gender.uppercase()})      Employee ID: ${employee.EmployeeID}")
-        println("\n-----------------------------------------------------------------")
-        println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
-        println("\n----------------------------------------------------------------")
-        println("  \tSalary :" + round(employee.GrossSalary / x))
-        println("\tBonus: ${round(employee.Bonus / x)}")
-        println("                                    \tPAYE : " + round(employee.PAYE))
-        println("                                      \tPRSI : " + round(employee.PRSI))
-        println("                                     \tCycle To Work: ${employee.CycleToWork}")
-        println("\n----------------------------------------------------------------")
-        println("\t Gross: " + round(employee.GrossSalary) + "\t Total Deduction:" + round(employee.CycleToWork))
-        println("\n----------------------------------------------------------------")
-
-    }
 
     fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 
