@@ -11,6 +11,8 @@ class Employee(
         else -> "${firstName}  ${Surname}"
     }
 
+    fun roundTwoDecimals(number: Double) = round(number * 100) / 100
+
 
     fun getMonthlySalary() = (GrossSalary / x)
     fun getMonthlyPRSI() = (GrossSalary / x / y * PRSI)
@@ -37,6 +39,10 @@ class Employee(
         println("\t Gross: " + round(GrossSalary) + "\t Total Deduction:" + round(CycleToWork))
         println("\n----------------------------------------------------------------")
 
+    }
+
+    override fun toString(): String {
+        return "Employee(firstName='$firstName', Surname='$Surname', Gender=$Gender, EmployeeID=$EmployeeID, GrossSalary=$GrossSalary, PAYE=$PAYE, PRSI=$PRSI, Bonus=$Bonus, CycleToWork=$CycleToWork)"
     }
 
 }

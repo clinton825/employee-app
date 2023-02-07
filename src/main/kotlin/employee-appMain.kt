@@ -69,9 +69,11 @@ fun start() {
     } while (input != -1)
 }
 
-fun list () {
-    println(employees.findAll())
+fun list(){
+    employees.findAll()
+        .forEach{ println(it.toString()) }
 }
+
 
 fun search() {
     val employee = getEmployeeById()
@@ -101,5 +103,9 @@ fun dummyData() {
     employees.create(Employee("Mary", "Quinn", 'f', 0, 75685.41, 40.0, 8.5, 4500.0, 0.0))
 }
 
-    fun roundTwoDecimals(number: Double) = round(number * 100) / 100
+
+
+
+
+
 
