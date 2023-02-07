@@ -1,4 +1,5 @@
 
+import mu.KotlinLogging
 import kotlin.math.round
 var employees = EmployeeAPI()
 
@@ -29,8 +30,16 @@ fun add(){
 
 
 
+val logger = KotlinLogging.logger{}
 fun main(args: Array<String>) {
-start()
+    logger.info{"Lauching Employee App"}
+    logger.info{"Lauching Employee App"}
+    logger.info{"Lauching Employee App"}
+    logger.info{"Lauching Employee App"}
+    logger.info{"Lauching Employee App"}
+
+
+    start()
 
 }
 

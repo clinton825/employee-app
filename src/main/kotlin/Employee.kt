@@ -21,25 +21,26 @@ class Employee(
     fun getTotalMonthlyDeductions() = round(PAYE + PRSI + CycleToWork)
     fun getNetMonthlyPay() = GrossSalary - CycleToWork
 
-    fun getPayslip() {
+    fun getPayslip() =
+        """"
+        ----------------------------------------------------------------
+                         Monthly Payslip
+        -----------------------------------------------------------------
+        Employee Name:  ${firstName.uppercase()}  ${Surname.uppercase()}  (${Gender.uppercase()}     Employee ID: ${EmployeeID}
+       -----------------------------------------------------------------
+        PAYMENT DETAILS       DEDUCTION TOTALS
+        ----------------------------------------------------------------
+        Bonus: ${round(Bonus / x)}
+                                                 PAYE :  ${(PAYE)}
+                                                 PRSI :  ${(PRSI)}
+                                                 Cycle To Work: ${CycleToWork}
+        ---------------------------------------------------------------
+        Gross: ${round(GrossSalary)}      Total Deduction: ${(CycleToWork)}
+        ----------------------------------------------------------------
+        NET PAY : ${getNetMonthlyPay()}
+        --------------------------------------------------------------- """
 
-        println("\n----------------------------------------------------------------")
-        println("                     Monthly Payslip")
-        println("\n-----------------------------------------------------------------")
-        println("\tEmployee Name:  ${firstName.uppercase()}  $Surname.uppercase()} (${Gender.uppercase()})      Employee ID: ${EmployeeID}")
-        println("\n-----------------------------------------------------------------")
-        println("\tPAYMENT DETAILS       DEDUCTION TOTALS")
-        println("\n----------------------------------------------------------------")
-        println("  \tSalary :" + round(GrossSalary / x))
-        println("\tBonus: ${round(Bonus / x)}")
-        println("                                    \tPAYE : " + round(PAYE))
-        println("                                      \tPRSI : " + round(PRSI))
-        println("                                     \tCycle To Work: ${CycleToWork}")
-        println("\n----------------------------------------------------------------")
-        println("\t Gross: " + round(GrossSalary) + "\t Total Deduction:" + round(CycleToWork))
-        println("\n----------------------------------------------------------------")
 
-    }
 
     override fun toString(): String {
         return "Employee(firstName='$firstName', Surname='$Surname', Gender=$Gender, EmployeeID=$EmployeeID, GrossSalary=$GrossSalary, PAYE=$PAYE, PRSI=$PRSI, Bonus=$Bonus, CycleToWork=$CycleToWork)"
