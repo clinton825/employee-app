@@ -1,12 +1,13 @@
-
+import Controllers.EmployeeAPI
+import Models.Employee
 import mu.KotlinLogging
-import kotlin.math.round
+
 var employees = EmployeeAPI()
 
 val x = 12
 val y = 100
 
-fun add(){
+fun add() {
     print("Enter first name: ")
     val firstName = readLine().toString()
     print("Enter surname: ")
@@ -20,23 +21,33 @@ fun add(){
     print("Enter PRSI %: ")
     val prsiPercentage = readLine()!!.toDouble()
     print("Enter Annual Bonus: ")
-    val annualBonus= readLine()!!.toDouble()
+    val annualBonus = readLine()!!.toDouble()
     print("Enter Cycle to Work Deduction: ")
-    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+    val cycleToWorkMonthlyDeduction = readLine()!!.toDouble()
 
-    employees.create(Employee(firstName, surname, gender, 0, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction))
+    employees.create(
+        Employee(
+            firstName,
+            surname,
+            gender,
+            0,
+            grossSalary,
+            payePercentage,
+            prsiPercentage,
+            annualBonus,
+            cycleToWorkMonthlyDeduction
+        )
+    )
 }
 
 
-
-
-val logger = KotlinLogging.logger{}
+val logger = KotlinLogging.logger {}
 fun main(args: Array<String>) {
-    logger.info{"Lauching Employee App"}
-    logger.info{"Lauching Employee App"}
-    logger.info{"Lauching Employee App"}
-    logger.info{"Lauching Employee App"}
-    logger.info{"Lauching Employee App"}
+    logger.info { "Lauching Employee App" }
+    logger.info { "Lauching Employee App" }
+    logger.info { "Lauching Employee App" }
+    logger.info { "Lauching Employee App" }
+    logger.info { "Lauching Employee App" }
 
 
     start()
@@ -44,18 +55,23 @@ fun main(args: Array<String>) {
 }
 
 
-
-
 fun menu(): Int {
-    print(""" 
+    print(
+        """ 
          |Employee Menu
          |   1. Add Employee
          |   2. List All Employees
          |   3. Search Employees 
          |   4. Print Payslip for Employee
+         |   5. Remove Employees 
+         |   6. Update Employees Details
+         |   7. Arranged Employee by Gender
+         |   8. sort Employee by Last Name
+         |   9. Order by Employee Hours  
          |  -1. Exit
          |       
-         |Enter Option : """.trimMargin())
+         |Enter Option : """.trimMargin()
+    )
     return readLine()!!.toInt()
 }
 
@@ -70,6 +86,8 @@ fun start() {
             2 -> list()
             3 -> search()
             4 -> paySlip()
+            5 -> remove()
+            8 -> sortedBySurname()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -78,9 +96,9 @@ fun start() {
     } while (input != -1)
 }
 
-fun list(){
+fun list() {
     employees.findAll()
-        .forEach{ println(it.toString()) }
+        .forEach { println(it.toString()) }
 }
 
 
@@ -94,13 +112,13 @@ fun search() {
 
 
 internal fun getEmployeeById(): Employee? {
-    print("Enter the employee id to search by: ")
+    print("Enter the employee id : ")
     val employeeID = readLine()!!.toInt()
     return employees.findOne(employeeID)
 }
 
 
-fun paySlip(){
+fun paySlip() {
     val employee = getEmployeeById()
     if (employee != null)
         println(employee.getPayslip())
@@ -112,6 +130,21 @@ fun dummyData() {
     employees.create(Employee("Mary", "Quinn", 'f', 0, 75685.41, 40.0, 8.5, 4500.0, 0.0))
 }
 
+fun remove() {
+    val employee = getEmployeeById()
+    if (employee == null) {
+        println("No employee found")
+    } else {
+        employees.remove(employee)
+    }
+
+
+}
+
+fun sortedBySurname() {
+       employees.sortedBySurname()
+    list()
+}
 
 
 

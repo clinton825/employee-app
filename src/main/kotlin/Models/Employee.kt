@@ -50,4 +50,6 @@ class Employee(
         return "Employee(firstName='$firstName', Surname='$Surname', Gender=$Gender, EmployeeID=$EmployeeID, GrossSalary=$GrossSalary, PAYE=$PAYE, PRSI=$PRSI, Bonus=$Bonus, CycleToWork=$CycleToWork)"
     }
 
+
+
 }
