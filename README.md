@@ -9,3 +9,4 @@ They  get started by entering thier password to view their payslip.
 They can get help at the read-me section of the app.
 ## Who maintains and contribute to the project: 
 The project will be maintained by the admin only and only the admin an contributes to it. 
+#New features added to the menu to remove and order employee in the menu
